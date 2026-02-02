@@ -1,0 +1,26 @@
+/* Nesting */
+/* SCSS */
+nav {
+  font-size: 1em;
+  font-font-weight: bold;
+  float: left;
+}
+nav ul {
+  list-style-type: none;
+}
+nav ul li {
+  float: left;
+  margin: 0 5px 0 0;
+  color: rgb(255, 255, 255);
+}
+nav ul li a {
+  text-decoration: none;
+}
+nav ul li a:hover {
+  text-decoration: underline;
+}
+nav ul li a {
+  color: rgb(255, 255, 255);
+}
+
+/*# sourceMappingURL=nav.css.map */
