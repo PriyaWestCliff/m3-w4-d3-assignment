@@ -7,62 +7,27 @@ const { check, validationResult } = require('express-validator');
 const router = express.Router();
 const Registration = mongoose.model('Registration');
 
-// Basic Auth using users.htpasswd
+// Basic auth (uses users.htpasswd)
 const basic = auth.basic({
   file: path.join(__dirname, '../users.htpasswd'),
 });
 
-/* =========================
-   1) HOME PAGE – SimpleKitchen
-   ========================= */
+// HOME
 router.get('/', (req, res) => {
   res.render('index', { title: 'Simple Kitchen' });
 });
 
-/* =========================
-   2) SHOW REGISTRATION FORM
-   ========================= */
+// REGISTER PAGE (GET)
 router.get('/register', (req, res) => {
-  res.render('form', { title: 'Registration form' });
+  res.render('register', { title: 'Register to subscribe' });
 });
 
-/* =========================
-   3) THANK YOU PAGE
-   ========================= */
-router.get('/thankyou', (req, res) => {
-  res.render('thankyou', { title: 'Thank you' });
-});
-
-/* =========================
-   4) PROTECTED REGISTRATIONS LIST
-   ========================= */
-router.get('/registrations', basic.check((req, res) => {
-  Registration.find()
-    .then((registrations) => {
-      res.render('registrations', {
-        title: 'Listing registrations',
-        registrations
-      });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500).send('Sorry! Something went wrong.');
-    });
-}));
-
-/* =========================
-   5) SUBMIT REGISTRATION FORM
-   ========================= */
+// REGISTER (POST)
 router.post(
   '/register',
   [
-    check('name')
-      .isLength({ min: 1 })
-      .withMessage('Please enter a name'),
-
-    check('email')
-      .isLength({ min: 1 })
-      .withMessage('Please enter an email'),
+    check('name').isLength({ min: 1 }).withMessage('Please enter a name'),
+    check('email').isLength({ min: 1 }).withMessage('Please enter an email'),
   ],
   (req, res) => {
     const errors = validationResult(req);
@@ -70,23 +35,38 @@ router.post(
     if (errors.isEmpty()) {
       const registration = new Registration(req.body);
 
-      registration.save()
-        .then(() => {
-          res.redirect('/thankyou');
-        })
+      registration
+        .save()
+        .then(() => res.redirect('/thankyou'))
         .catch((err) => {
           console.log(err);
           res.status(500).send('Sorry! Something went wrong.');
         });
-
     } else {
-      res.render('form', {
-        title: 'Registration form',
+      res.render('register', {
+        title: 'Register to subscribe',
         errors: errors.array(),
         data: req.body,
       });
     }
   }
 );
+
+// THANK YOU
+router.get('/thankyou', (req, res) => {
+  res.render('thankyou', { title: 'Thank you for your registration!' });
+});
+
+// REGISTRANTS (protected)
+router.get('/registrants', basic.check((req, res) => {
+  Registration.find()
+    .then((registrations) => {
+      res.render('registrants', { title: 'Listing registrations', registrations });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send('Sorry! Something went wrong.');
+    });
+}));
 
 module.exports = router;

@@ -1,25 +1,36 @@
-@import "colors";
+@import "colors.scss";
 
-/* Nesting */
-/* SCSS */
+/* Navigation Styles */
 nav {
   font: {
     size: 1em;
-    font-weight: bold;
+    weight: bold;
   }
-  float: left;
-  ul {
-    list-style-type: none;
-    li {
-      float: left;
-      margin: 0 5px 0 0;
-      color: $color4;
-      a {
-        text-decoration: none;
-        &:hover {
-          text-decoration: underline;
-        }
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+
+  .nav-left, .nav-right {
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+
+      li {
+        margin: 0 5px 0 0;
         color: $color4;
+
+        a {
+          text-decoration: none;
+          color: $color4;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
       }
     }
   }

@@ -1,37 +1,145 @@
-/* Nesting */
-/* SCSS */
+/* Navigation Styles */
 nav {
   font-size: 1em;
-  font-font-weight: bold;
-  float: left;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
 }
-nav ul {
+nav .nav-left ul, nav .nav-right ul {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
 }
-nav ul li {
-  float: left;
+nav .nav-left ul li, nav .nav-right ul li {
   margin: 0 5px 0 0;
   color: rgb(255, 255, 255);
 }
-nav ul li a {
+nav .nav-left ul li a, nav .nav-right ul li a {
   text-decoration: none;
-}
-nav ul li a:hover {
-  text-decoration: underline;
-}
-nav ul li a {
   color: rgb(255, 255, 255);
 }
+nav .nav-left ul li a:hover, nav .nav-right ul li a:hover {
+  text-decoration: underline;
+}
 
-/* Variables */
+/* Registration form styles */
+.registration-section {
+  flex: 1;
+  background: rgb(255, 255, 255);
+  padding: 3em 4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Register to subscribe */
+}
+.registration-section h2 {
+  color: rgb(49, 49, 48);
+  margin-bottom: 1.5em;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+}
+.registration-section {
+  /* Error messages   */
+}
+.registration-section .error-messages {
+  margin-bottom: 1em;
+  text-align: center;
+}
+.registration-section .error-messages p {
+  margin: 0.3em 0;
+  font-size: 0.9em;
+  color: rgb(49, 49, 48);
+}
+.registration-section .error-messages .error-label {
+  color: red;
+  font-weight: bold;
+}
+.registration-section .form-group {
+  margin-bottom: 1.2em;
+}
+.registration-section .form-group label {
+  display: block;
+  margin-bottom: 0.3em;
+  color: rgb(49, 49, 48);
+  font-size: 0.9em;
+  text-align: left;
+}
+.registration-section .form-group input {
+  width: 100%;
+  padding: 0.6em;
+  border: 1px solid #ddd;
+  font-size: 0.9em;
+  box-sizing: border-box;
+  text-align: left;
+}
+.registration-section .form-group input:focus {
+  outline: none;
+  border-color: rgb(218, 170, 14);
+}
+.registration-section .register-button {
+  background: rgb(218, 170, 14);
+  color: rgb(255, 255, 255);
+  padding: 0.7em 2em;
+  border: none;
+  font-size: 0.9em;
+  cursor: pointer;
+  margin-top: 1.5em;
+  align-self: center;
+}
+
+.registrants-container {
+  background: rgb(218, 170, 14);
+  min-height: 100vh;
+  padding: 2em 0;
+}
+
+.registrants-table {
+  width: 100%;
+  max-width: 1350px;
+  margin: 2em auto;
+  border-collapse: collapse;
+  background: rgb(255, 255, 255);
+}
+.registrants-table thead {
+  background: rgb(49, 49, 48);
+}
+.registrants-table thead th {
+  color: rgb(255, 255, 255);
+  padding: 1em;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 2px solid rgb(218, 170, 14);
+}
+.registrants-table tbody tr {
+  border-bottom: 1px solid #ddd;
+}
+.registrants-table tbody tr:nth-child(even) {
+  background: #f9f9f9;
+}
+.registrants-table tbody tr:hover {
+  background: rgb(212, 213, 216);
+}
+.registrants-table tbody tr td {
+  padding: 1em;
+  color: rgb(49, 49, 48);
+}
+
+/* Base styles */
 html {
   font-size: 1em;
   width: 100%;
 }
 
 body {
-  font-family: Arial, Helvetica, Sans-Serif;
+  font-family: Arial, Helvetica, sans-serif;
   background: rgb(218, 170, 14);
+  margin: 0;
+  padding: 0;
 }
 
 header {
@@ -46,29 +154,41 @@ main {
   min-height: 535px;
   padding: 1.5%;
   margin: 0 auto;
-}
-main #intro-image {
-  float: left;
-  width: 800px;
-}
-main #intro-image img {
-  width: 800px;
+  display: flex;
+  align-items: stretch;
 }
 main #intro-text {
   width: 550px;
-  height: 407px;
-  float: left;
   background: rgb(212, 213, 216);
   text-align: center;
-  padding-top: 8em;
+  padding: 8em 2em 2em 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-shrink: 0;
 }
 main #intro-text h3 {
   font-size: 2em;
   color: rgb(49, 49, 48);
+  margin: 1em 0;
 }
 main #intro-text span {
   font-family: "Sacramento", cursive;
   font-size: 2em;
+  color: rgb(49, 49, 48);
+}
+main #intro-text p {
+  color: rgb(49, 49, 48);
+  margin: 1em 0;
+}
+main #intro-image {
+  flex: 1;
+  display: flex;
+}
+main #intro-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 footer {
@@ -76,18 +196,25 @@ footer {
   margin: 2em auto;
   padding-left: 80px;
   font-size: 0.85em;
+  color: rgb(49, 49, 48);
 }
 
-button, .submit-buttton {
+/* Button styles */
+button,
+.submit-buttton {
   color: rgb(255, 255, 255);
-  width: 100px;
+  width: 150px;
   height: 40px;
   background: rgb(218, 170, 14);
-  margin-top: 2em;
+  margin: 2em auto 0 auto;
+  border: 1px solid rgb(49, 49, 48);
+  cursor: pointer;
+  font-size: 1em;
+  display: block;
 }
-
-.submit-buttton {
-  border: 1px rgb(49, 49, 48);
+button:hover,
+.submit-buttton:hover {
+  background: rgb(49, 49, 48);
 }
 
 /*# sourceMappingURL=styles.css.map */

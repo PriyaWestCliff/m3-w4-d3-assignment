@@ -1,0 +1,75 @@
+@import "colors.scss";
+@import "variables.scss";
+
+/* Registration form styles */
+.registration-section {
+  flex: 1;
+  background: $mainColor;
+  padding: 3em 4em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  /* Register to subscribe */
+  h2 {
+    color: $color3;
+    margin-bottom: 1.5em;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  /* Error messages   */
+  .error-messages {
+    margin-bottom: 1em;
+    text-align: center;
+
+    p {
+      margin: 0.3em 0;
+      font-size: 0.9em;
+      color: $color3;
+    }
+
+    .error-label {
+      color: red;
+      font-weight: bold;
+    }
+  }
+
+  .form-group {
+    margin-bottom: 1.2em;
+
+    label {
+      display: block;
+      margin-bottom: 0.3em;
+      color: $color3;
+      font-size: 0.9em;
+      text-align: left;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.6em;
+      border: 1px solid #ddd;
+      font-size: 0.9em;
+      box-sizing: border-box;
+      text-align: left;
+
+      &:focus {
+        outline: none;
+        border-color: $backgroundColor1;
+      }
+    }
+  }
+
+  .register-button {
+    background: $backgroundColor1;
+    color: $color4;
+    padding: 0.7em 2em;
+    border: none;
+    font-size: 0.9em;
+    cursor: pointer;
+    margin-top: 1.5em;
+    align-self: center;
+  }
+}

@@ -2,21 +2,23 @@ doctype html
 html
   head
     title= title
-
-    // Google Font used by SimpleKitchen
-    link(rel="preconnect" href="https://fonts.gstatic.com")
-    link(href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet")
-
-    // Bootstrap (Form Demo)
-    link(rel="stylesheet" href="/css/bootstrap.min.css")
-
-    // SimpleKitchen CSS (SASS compiled)
-    link(rel="stylesheet" href="/css/colors.css")
-    link(rel="stylesheet" href="/css/nav.css")
-    link(rel="stylesheet" href="/css/styles.css")
-
-    // Form demo CSS (renamed so it won't override kitchen styles)
-    link(rel="stylesheet" href="/css/form.css")
+    link(rel='preconnect', href='https://fonts.gstatic.com')
+    link(href='https://fonts.googleapis.com/css2?family=Sacramento&display=swap', rel='stylesheet')
+    link(rel='stylesheet', href='/css/styles.css')
 
   body
+    header
+      nav
+        .nav-left
+          ul
+            li: a(href='/') Home
+            li |
+            li: a(href='#') Blog
+        .nav-right
+          ul
+            li: a(href='/register') Register
+
     block content
+
+    footer
+      | © Copyright 2026
